@@ -9,6 +9,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 import { ThemeProvider } from "next-themes";
+import { ModeToggle } from "@/components/ui/ThemeBtn";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -72,6 +73,7 @@ export default async function RootLayout({
             >
               Contact
             </Link>
+            <ModeToggle/>
           </div>
           <div className="flex">
             <div className="w-[300px] p-4 border-r flex flex-col gap-1">
