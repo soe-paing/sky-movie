@@ -4,7 +4,7 @@ interface Movie {
     poster_path: string;
 }
 
-async function  fetchTrending() {
+async function  fetchTrending(): Promise<Movie[]> {
   const res = await fetch("https://api.themoviedb.org/3/trending/movie/day", {
     headers: {
       Authorization: `Bearer ${process.env.TMDB_TOKEN}`
