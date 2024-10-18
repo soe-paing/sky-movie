@@ -8,6 +8,8 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 
+import { ThemeProvider } from "next-themes";
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -52,36 +54,43 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="p-4 border-b flex justify-between items-center">
-          <h1 className="text-2xl font-bold flex gap-2 items-center">
-            <Clapperboard size={32} />
-            <Link href="/">Movie</Link>
-          </h1>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="p-4 border-b flex justify-between items-center">
+            <h1 className="text-2xl font-bold flex gap-2 items-center">
+              <Clapperboard size={32} />
+              <Link href="/">Movie</Link>
+            </h1>
 
-          <Link 
-            className="text-blue-600"
-            href='/contact'
-          >
-            Contact
-          </Link>
-        </div>
-        <div className="flex">
-          <div className="w-[300px] p-4 border-r flex flex-col gap-1">
-            {genres.map( genre => {
-              return <Button variant="outline" asChild className="flex-grow justify-start">
-                <Link
-                  href={`/movie/${genre.id}`}
-                  className="flex items-center gap-2">
-                    <Video color="#666"/>
-                    {genre.name}
-                </Link>
-              </Button>
-            })}
+            <Link 
+              className="text-blue-600"
+              href='/contact'
+            >
+              Contact
+            </Link>
           </div>
-          <div className="p-4">
-            {children}
+          <div className="flex">
+            <div className="w-[300px] p-4 border-r flex flex-col gap-1">
+              {genres.map( genre => {
+                return <Button variant="outline" asChild className="flex-grow justify-start">
+                  <Link
+                    href={`/movie/${genre.id}`}
+                    className="flex items-center gap-2">
+                      <Video color="#666"/>
+                      {genre.name}
+                  </Link>
+                </Button>
+              })}
+            </div>
+            <div className="p-4">
+              {children}
+            </div>
           </div>
-        </div>
+        </ThemeProvider>
       </body>
     </html>
   );
