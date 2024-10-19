@@ -67,20 +67,24 @@ export default async function RootLayout({
               <Link href="/">Movie</Link>
             </h1>
 
-            <Link 
-              className="text-blue-600"
-              href='/contact'
+            <div
+              className="flex gap-3 items-center"
             >
-              Contact
-            </Link>
-            <ModeToggle/>
+              <Link 
+                className="text-blue-600"
+                href='/contact'
+              >
+                Contact
+              </Link>
+              <ModeToggle/>
+            </div>
           </div>
           <div className="flex">
             <div className="w-[300px] p-4 border-r flex flex-col gap-1">
               {genres.map( genre => {
                 return <Button variant="outline" asChild className="flex-grow justify-start">
                   <Link
-                    href={`/movie/${genre.id}`}
+                    href={`/genre/${genre.name}/${genre.id}`}
                     className="flex items-center gap-2">
                       <Video color="#666"/>
                       {genre.name}
