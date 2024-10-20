@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-import { Clapperboard, Video } from "lucide-react";
+import { Clapperboard, Video, Search } from "lucide-react";
 
 import Link from "next/link";
 
@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/button";
 
 import { ThemeProvider } from "next-themes";
 import { ModeToggle } from "@/components/ui/ThemeBtn";
+import { Input } from "@/components/ui/input";
+import { redirect } from "next/navigation";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -50,6 +52,15 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const genres = await fetchGenres();
+
+  async function searchMovies(formData: FormData) {
+    "use server";
+    
+    const q = formData.get("q");
+
+    redirect(`/search?q=${q}`);
+  }
+
   return (
     <html lang="en">
       <body
@@ -70,6 +81,12 @@ export default async function RootLayout({
             <div
               className="flex gap-3 items-center"
             >
+              <form action={searchMovies} className="flex items-center gap-1">
+                <Input placeholder="Search" name="q"/>
+                <Button variant="ghost">
+                  <Search/>
+                </Button>
+              </form>
               <Link 
                 className="text-blue-600"
                 href='/contact'
@@ -80,7 +97,7 @@ export default async function RootLayout({
             </div>
           </div>
           <div className="flex">
-            <div className="w-[300px] p-4 border-r flex flex-col gap-1">
+            <div className="w-[300px] sticky top-0 left-0 h-[100vh] p-4 border-r flex flex-col gap-1">
               {genres.map( genre => {
                 return <Button variant="outline" asChild className="flex-grow justify-start">
                   <Link
