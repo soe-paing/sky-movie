@@ -97,19 +97,21 @@ export default async function RootLayout({
             </div>
           </div>
           <div className="flex">
-            <div className="w-[300px] sticky top-0 left-0 h-[100vh] p-4 border-r flex flex-col gap-1">
-              {genres.map( genre => {
-                return <Button variant="outline" asChild className="flex-grow justify-start">
-                  <Link
-                    href={`/genre/${genre.name}/${genre.id}`}
-                    className="flex items-center gap-2">
-                      <Video color="#666"/>
-                      {genre.name}
-                  </Link>
-                </Button>
-              })}
+            <div className="sticky top-0 h-[100vh] border-r p-2">
+              <div className="flex flex-col gap-2 pb-5 h-[100%] overflow-y-auto relative -mr-2 pr-2">
+                {genres.map( genre => {
+                  return <Button variant="outline" asChild className="flex-grow justify-start">
+                    <Link
+                      href={`/genre/${genre.name}/${genre.id}`}
+                      className="flex items-center gap-2">
+                        <Video color="#666"/>
+                        {genre.name}
+                    </Link>
+                  </Button>
+                })}
+              </div>
             </div>
-            <div className="p-4">
+            <div className="left-auto p-4">
               {children}
             </div>
           </div>
