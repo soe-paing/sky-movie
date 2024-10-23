@@ -1,5 +1,14 @@
 import Movie from "@/components/movie";
 
+import {
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	CarouselNext,
+	CarouselPrevious,
+} from "@/components/ui/carousel"
+  
+
 interface Movie {
 	id: number;
 	title: string;
@@ -34,21 +43,38 @@ export default async function Home() {
 	return (
 		<div>
 			<h2 className="text-lg font-bold pb-2 mb-4 border-b">Trending</h2>
-			<div className="flex gap-4 flex-wrap justify-evenly">
-				{trending.map(movie => {
-					return (
-						<Movie key={movie.id} movie={movie}/>
-					);
-				})}
-			</div>
+			<Carousel>
+				<CarouselContent 
+					className="overflow-x-scroll relative"
+					style={{scrollbarWidth: "none"}}>
+					{trending.map(movie => {
+						return (
+							<CarouselItem className="md:basis-1/2 lg:basis-1/5">
+								<Movie key={movie.id} movie={movie}/>
+							</CarouselItem>
+						);
+					})}
+				</CarouselContent>
+				<CarouselPrevious/>
+				<CarouselNext/>
+			</Carousel>
+
 			<h2 className="text-lg font-bold pb-2 mb-4 border-b">Popular</h2>
-			<div className="flex gap-4 flex-wrap justify-evenly">
-				{popular.map(movie => {
-					return (
-						<Movie key={movie.id} movie={movie}/>
-					);
-				})}
-			</div>
+			<Carousel>
+				<CarouselContent 
+					className="overflow-x-scroll relative"
+					style={{scrollbarWidth: "none"}}>
+					{popular.map(movie => {
+						return (
+							<CarouselItem className="md:basis-1/2 lg:basis-1/5">
+								<Movie key={movie.id} movie={movie}/>
+							</CarouselItem>
+						);
+					})}
+				</CarouselContent>
+				<CarouselPrevious/>
+				<CarouselNext/>
+			</Carousel>
 		</div>
 	);
 }

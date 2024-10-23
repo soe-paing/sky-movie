@@ -15,12 +15,13 @@ export default function Movie({ movie }: { movie: MovieType}) {
 
     return (
         <div
-            className="flex flex-col justify-center basis-1/5 text-center mb-2 hover:scale-105 transition-all cursor-pointer"
+            className="flex flex-col justify-center basis-1/5 text-center mb-2 hover:scale-80 transition-all cursor-pointer"
             onClick={() => {
                 router.push(`/movie/${movie.id}`);
             }}
         >
             <img
+                className="rounded-lg"
                 src={images + movie.poster_path}
                 alt=""
             />
