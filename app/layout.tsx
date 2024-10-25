@@ -62,7 +62,7 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang="en">
+    <html className="overflow-x-hidden" lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -75,7 +75,7 @@ export default async function RootLayout({
           <div className="p-4 border-b flex justify-between items-center">
             <h1 className="text-2xl font-bold flex gap-2 items-center">
               <Clapperboard size={32} />
-              <Link href="/">Movie</Link>
+              <Link href="/">SKY Movie</Link>
             </h1>
 
             <div
@@ -87,12 +87,6 @@ export default async function RootLayout({
                   <Search/>
                 </Button>
               </form>
-              <Link 
-                className="text-blue-600"
-                href='/contact'
-              >
-                Contact
-              </Link>
               <ModeToggle/>
             </div>
           </div>
