@@ -43,10 +43,10 @@ export default async function Home() {
 	return (
 		<div>
 			<h2 className="text-lg font-bold pb-2 mb-4 border-b">Trending</h2>
-			<Carousel>
-				<CarouselContent 
-					className="overflow-x-scroll relative"
-					style={{scrollbarWidth: "none"}}>
+			<Carousel
+				className="overflow-x-scroll relative"
+				style={{scrollbarWidth: "none"}}>
+				<CarouselContent>
 					{trending.map(movie => {
 						return (
 							<CarouselItem className="md:basis-1/2 lg:basis-1/5">
@@ -60,10 +60,10 @@ export default async function Home() {
 			</Carousel>
 
 			<h2 className="text-lg font-bold pb-2 mb-4 border-b">Popular</h2>
-			<Carousel>
-				<CarouselContent 
-					className="overflow-x-scroll relative"
-					style={{scrollbarWidth: "none"}}>
+			<Carousel
+				className="overflow-x-scroll relative"
+				style={{scrollbarWidth: "none"}}>
+				<CarouselContent>
 					{popular.map(movie => {
 						return (
 							<CarouselItem className="md:basis-1/2 lg:basis-1/5">
