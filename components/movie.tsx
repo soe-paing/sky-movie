@@ -15,16 +15,18 @@ export default function Movie({ movie }: { movie: MovieType}) {
 
     return (
         <div
-            className="flex flex-col justify-center basis-1/5 text-center mb-2 hover:scale-80 transition-all cursor-pointer"
+            className="flex flex-col justify-center basis-1/5 text-center mb-2 cursor-pointer"
             onClick={() => {
                 router.push(`/movie/${movie.id}`);
             }}
         >
-            <img
-                className="rounded-lg"
-                src={images + movie.poster_path}
-                alt=""
-            />
+            <div className="rounded-lg w-[100%] overflow-hidden mb-2">
+                <img
+                    className="w-[100%] transition-all hover:scale-110"
+                    src={images + movie.poster_path}
+                    alt=""
+                />
+            </div>
             <h3>{movie.title}</h3>
             <span className="text-gray-400">
                 {movie.release_date.split("-")[0]}

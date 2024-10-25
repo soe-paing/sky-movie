@@ -46,13 +46,13 @@ export default async function Movie({ params }: { params: { id: string }}) {
 
     return (
         <div>
-            <h2 className="text-lg font-bold pb-2 mb-2 border-b">Movie {params.id}</h2>
+            <h2 className="text-lg font-bold pb-2 mb-2 border-b">{movie.title}</h2>
             <div className="mb-4">
                 {movie.genres.map(genre => {
                     return <Badge variant="outline">{genre.name}</Badge>;
                 })}
             </div>
-            <img src={images + movie.backdrop_path} alt="Backdrop" />
+            <img className="w-[100%]" src={images + movie.backdrop_path} alt="Backdrop" />
             <div className="mt-4">
                 {movie.overview}
             </div>
@@ -62,7 +62,7 @@ export default async function Movie({ params }: { params: { id: string }}) {
                     return (
                         <div className="flex flex-col justify-end items-center mb-4">
                             {person.profile_path ? (
-                                <img src={profile + person.profile_path} alt="Profile" />
+                                <img className="rounded-lg" src={profile + person.profile_path} alt="Profile" />
                             ) : (
                                 <div className="h-[250px]"></div>
                             )}
