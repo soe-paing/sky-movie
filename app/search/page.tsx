@@ -25,8 +25,8 @@ export default async function Search({
                 Search: {searchParams.q}
             </h2>
             <div className="flex gap-4 flex-wrap justify-evenly">
-                {movies.map(movie => {
-                    return <Movie movie={movie}/>
+                {movies.map((movie, idx) => {
+                    return <Movie key={idx} movie={movie}/>
                 })}
             </div>
         </div>

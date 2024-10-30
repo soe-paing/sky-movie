@@ -49,8 +49,8 @@ export default async function Home() {
 				<CarouselContent>
 					{trending.map(movie => {
 						return (
-							<CarouselItem className="md:basis-1/2 lg:basis-1/5">
-								<Movie key={movie.id} movie={movie}/>
+							<CarouselItem  key={movie.id} className="md:basis-1/2 lg:basis-1/5">
+								<Movie movie={movie}/>
 							</CarouselItem>
 						);
 					})}

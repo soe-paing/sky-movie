@@ -93,8 +93,8 @@ export default async function RootLayout({
           <div className="flex">
             <div className="sticky top-0 h-[100vh] border-r p-2">
               <div className="flex flex-col gap-2 pb-5 h-[100%] overflow-y-auto relative -mr-2 pr-2">
-                {genres.map( genre => {
-                  return <Button variant="outline" asChild className="flex-grow justify-start">
+                {genres.map( (genre, idx) => {
+                  return <Button variant="outline" key={idx} asChild className="flex-grow justify-start">
                     <Link
                       href={`/genre/${genre.name}/${genre.id}`}
                       className="flex items-center gap-2">
